@@ -14,7 +14,7 @@ public class Fonctions {
      * @return unTableau 2D de char
      * @throws FileNotFoundException fichier introuvable
      */
-    public char[][] mappingMap(String pathFichier) throws FileNotFoundException {
+    public static char[][] mappingMap(String pathFichier) throws FileNotFoundException {
 
         String temp = null;
         String sautLigne = "|";

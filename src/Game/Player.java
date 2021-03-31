@@ -1,6 +1,6 @@
 package Game;
 
-public class Player extends Partie {
+public class Player {
 
     private String nomJoueur;
     private int recordJoueur; // A utiliser si on finit plus tot avec une co BDD

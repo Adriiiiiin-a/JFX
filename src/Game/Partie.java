@@ -1,6 +1,8 @@
 package Game;
 
 
+import java.io.FileNotFoundException;
+
 /**
  *Initialise la partie:
  * Planche de jeu
@@ -20,13 +22,23 @@ public class Partie {
 
         Player joueur = new Player();
 
-        Board board = new Board();
+        Board board = null;
+        try {
+            board = new Board();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         this.joueurPartie = joueur;
         this.boardPartie = board;
 
     }
 
+    public Player getJoueurPartie() {
+        return joueurPartie;
+    }
 
-
+    public Board getBoardPartie() {
+        return boardPartie;
+    }
 }
