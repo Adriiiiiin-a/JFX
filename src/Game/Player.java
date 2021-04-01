@@ -111,7 +111,8 @@ public class Player extends Partie{
 
         }
 
-        Fonctions.changeState(actual);
+        Contenu toChange = Fonctions.changeState(actual);
+        planche[x][y] = toChange;
 
 
 
@@ -147,24 +148,26 @@ public class Player extends Partie{
 
         if(dir == GAUCHE && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
+            this.coordonnes[0]-=1;
+
 
 
         }else if(dir == DROITE && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
+            this.coordonnes[0]+=1;
 
         }else if (dir == HAUT && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
+            this.coordonnes[1]+=1;
 
         }else if (dir == BAS && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
-
+            this.coordonnes[1]-=1;
 
         }
 
-
-
-
-
+        x = this.coordonnes[0];
+        y = this.coordonnes[1];
         actual = scanPos(planche, x, y);
         loose = checkLose(actual);
         if(loose){
@@ -180,7 +183,7 @@ public class Player extends Partie{
 
         }
 
-        return toReturn[][];
+        return planche;
 
     }
 
