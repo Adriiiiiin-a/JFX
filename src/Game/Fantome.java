@@ -52,7 +52,7 @@ public class Fantome {
     }
 
 
-    public void choixDirection(int degresDifficulté, Contenu[][] planche){
+    public Contenu[][] action(int degresDifficulté, Contenu[][] planche){
 
         int x = this.coordonnees[0];
         int y = this.coordonnees[1];
@@ -67,11 +67,7 @@ public class Fantome {
         // Si un fantome croise un autre les deux font demi tour
 
 
-
-
-
-
-
+        return planche;
     }
 
 

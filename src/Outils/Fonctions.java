@@ -1,6 +1,8 @@
 package Outils;
 
 
+import Game.Player;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -278,6 +280,12 @@ public class Fonctions {
         }
 
         return toReturn;
+
+    }
+
+
+    public static void ecritureRecord(Player joueur){
+
 
     }
 

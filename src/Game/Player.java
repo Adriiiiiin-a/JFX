@@ -10,9 +10,9 @@ import Outils.Constantes.*;
 
 import static Outils.Constantes.getCooSpawnPlayer;
 import static Outils.Directions.*;
-import static Outils.Fonctions.checkTraversable;
+import static Outils.Fonctions.*;
 
-public class Player {
+public class Player extends Partie{
 
     private String nomJoueur;
     private int recordJoueur; // A utiliser si on finit plus tot avec une co BDD
@@ -89,6 +89,27 @@ public class Player {
 
     public Contenu[][] action(Contenu[][] planche){
 
+        int x = this.coordonnes[0];
+        int y = this.coordonnes[1];
+        boolean loose = false;
+
+        Contenu actual = scanPos(planche, x, y);
+
+        loose = checkLose(actual);
+        if(loose){
+
+            if(nbVies >0) {
+                this.nbVies -= 1;
+                super.relance = true;
+            }else{
+                System.out.print("Perdu ! looser va <3");
+                super.perdu = true;
+                return planche;
+            }
+
+            }
+
+
 
 
         String toucheEnfoncee = null;
@@ -115,8 +136,7 @@ public class Player {
 
         this.precedenteDirection = dir;
 
-        int x = this.coordonnes[0];
-        int y = this.coordonnes[1];
+
 
         Contenu[] contenuAutour = Fonctions.scanContenuAutour(planche,x,y);
 

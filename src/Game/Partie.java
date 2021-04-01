@@ -2,8 +2,10 @@ package Game;
 
 
 import java.io.FileNotFoundException;
-import Outils.*;
+import java.util.concurrent.TimeUnit;
 
+import Outils.*;
+import Outils.Fonctions.*;
 /**
  *Initialise la partie:
  * Planche de jeu
@@ -23,6 +25,11 @@ public class Partie {
     private Fantome fantome2;
     private Fantome fantome3;
     private Fantome fantome4;
+
+    private int niveau;
+
+    public boolean perdu;
+    public boolean relance;
 
     public Partie() {
 
@@ -49,6 +56,10 @@ public class Partie {
         this.fantome3 = fantome3;
         this.fantome4 = fantome4;
 
+        this.perdu = false;
+        this.niveau = 0;
+        this.relance = false;
+
     }
 
     public Player getJoueurPartie() {
@@ -60,13 +71,28 @@ public class Partie {
     }
 
 
+
     /**
      *
      *
      */
-    public void jeu(){
+    public void jeu() throws InterruptedException {
 
+        while(!this.perdu && !this.relance){
 
+            this.boardPartie.setCases(joueurPartie.action(this.boardPartie.getCases()));
+
+            if(this.perdu || this.relance){return;}
+
+            this.boardPartie.setCases(fantome1.action(this.niveau ,this.boardPartie.getCases()));
+            this.boardPartie.setCases(fantome2.action(this.niveau ,this.boardPartie.getCases()));
+            this.boardPartie.setCases(fantome3.action(this.niveau ,this.boardPartie.getCases()));
+            this.boardPartie.setCases(fantome4.action(this.niveau ,this.boardPartie.getCases()));
+
+        }
+        if(this.relance){this.relance = false; TimeUnit.SECONDS.sleep(3); jeu();}
+
+        Fonctions.ecritureRecord(this.joueurPartie);
 
 
 

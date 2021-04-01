@@ -1,6 +1,8 @@
 package Game;
 
 
+import Outils.Contenu;
+
 import java.io.FileNotFoundException;
 
 /**
@@ -33,7 +35,15 @@ public class Board {
 
     }
 
+    public char[][] getMap() {
+        return map;
+    }
 
+    public Contenu[][] getCases() {
+        return cases;
+    }
 
-
+    public void setCases(Contenu[][] cases) {
+        this.cases = cases;
+    }
 }
