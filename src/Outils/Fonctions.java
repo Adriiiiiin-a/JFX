@@ -62,32 +62,28 @@ public class Fonctions {
         List<Directions> toReturn = new ArrayList<Directions>();
 
 
-        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  || toScan[posX-1][posY] == Contenu.GROS_BONBON || toScan[posX-1][posY] == Contenu.FANTOME1||toScan[posX-1][posY] == Contenu.FANTOME2 ||toScan[posX-1][posY] == Contenu.FANTOME3){
+        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  || toScan[posX-1][posY] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.GAUCHE);
 
         }
-        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  || toScan[posX+1][posY] == Contenu.GROS_BONBON || toScan[posX+1][posY] == Contenu.FANTOME1||toScan[posX+1][posY] == Contenu.FANTOME2 ||toScan[posX+1][posY] == Contenu.FANTOME3 ){
+        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  || toScan[posX+1][posY] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.DROITE);
 
         }
 
-        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  || toScan[posX][posY-1] == Contenu.GROS_BONBON || toScan[posX][posY-1] == Contenu.FANTOME1||toScan[posX][posY-1] == Contenu.FANTOME2 ||toScan[posX][posY-1] == Contenu.FANTOME3 ){
+        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  || toScan[posX][posY-1] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.BAS);
 
         }
-        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  || toScan[posX][posY+1] == Contenu.GROS_BONBON || toScan[posX][posY+1] == Contenu.FANTOME1||toScan[posX][posY+1] == Contenu.FANTOME2 ||toScan[posX][posY+1] == Contenu.FANTOME3){
+        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  || toScan[posX][posY+1] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.HAUT);
 
         }
-
-
-
         return toReturn;
-
     }
 
     /**
@@ -181,31 +177,108 @@ public class Fonctions {
      * @param autour le tableau retourné par scanContenuAutour
      * @return true si traversable false sinon
      */
-    public static boolean checkTraversable(Directions dir, Contenu[] autour){
+    public static boolean checkTraversable(Directions dir, Contenu[] autour, Contenu type){
 
-        switch(dir){
+        if(type == Contenu.PACMAN) {
 
-            case GAUCHE : if(autour[3]==Contenu.MUR || autour[3]==Contenu.PORTE){return false;}break;
-            case DROITE: if(autour[1]==Contenu.MUR || autour[1]==Contenu.PORTE){return false;}break;
-            case BAS : if(autour[2]==Contenu.MUR || autour[2]==Contenu.PORTE){return false;}break;
-            case HAUT: if(autour[0]==Contenu.MUR || autour[0]==Contenu.PORTE){return false;}break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + dir);
+            switch (dir) {
+
+                case GAUCHE:
+                    if (autour[3] == Contenu.MUR || autour[3] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                case DROITE:
+                    if (autour[1] == Contenu.MUR || autour[1] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                case BAS:
+                    if (autour[2] == Contenu.MUR || autour[2] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                case HAUT:
+                    if (autour[0] == Contenu.MUR || autour[0] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + dir);
+
+            }
+
+        }else{
+
+            switch (dir) {
+
+                case GAUCHE:
+                    if (autour[3] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                case DROITE:
+                    if (autour[1] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                case BAS:
+                    if (autour[2] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                case HAUT:
+                    if (autour[0] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + dir);
+
+            }
+
 
         }
+
         return true;
-
-
     }
 
-    public static boolean checkLose(Contenu[][] toScan, int posX, int posY){
+    /**
+     * Check si la case contient un fantome
+     * @param toCheck result de scanPos
+     * @return true si fantome false sinon
+     */
+    public static boolean checkLose(Contenu toCheck){
 
-        if (scanPos(toScan,posX,posY) == Contenu.FANTOME1 || scanPos(toScan,posX,posY) == Contenu.FANTOME2 || scanPos(toScan,posX,posY) == Contenu.FANTOME3 || scanPos(toScan,posX,posY) == Contenu.FANTOME4){
+        if (toCheck == Contenu.FANTOME1 || toCheck == Contenu.FANTOME2 || toCheck == Contenu.FANTOME3 || toCheck == Contenu.FANTOME4){
             return true;
         }
-
-
         return false;
+    }
+
+
+    /**
+     *
+     * @param toChange resultat de scanPos
+     * @return ne nouveau contenu de la case
+     */
+    public Contenu changeState(Contenu toChange){
+        Contenu toReturn;
+        switch (toChange){
+
+            case GROS_BONBON:
+                toReturn = Contenu.VIDE;
+                break;
+            case BONBON:
+                toReturn = Contenu.VIDE;
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + toChange);
+        }
+
+        return toReturn;
+
     }
 
 
