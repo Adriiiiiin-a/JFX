@@ -20,6 +20,4 @@ public class Constantes {
     public static int[] getCooDefaut() {
         return cooDefaut;
     }
-
-    //CREE CONST
 }
