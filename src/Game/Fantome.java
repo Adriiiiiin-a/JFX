@@ -15,6 +15,7 @@ public class Fantome {
 
     private Directions precedenteDirection;
 
+    private int etat = 0; //0 = etat normal, 1 = bleu, pacman a mangé un supergom, 2 = le fantôme a été mangé
 
     public Fantome(int type, int[] coo){
 
@@ -51,6 +52,31 @@ public class Fantome {
         this.typeFantome = typeFantome;
     }
 
+    public int getEtat(){
+        return etat;
+    }
+
+    public void setEtat(int etat){
+        this.etat = etat;
+    }
+
+    public int[] getCoordonnees(){
+        return coordonnees;
+    }
+
+    public void setCoordonnees(int[] coordonnees){
+        this.coordonnees = coordonnees;
+    }
+
+    public Directions getPrecedenteDirection() {
+        return precedenteDirection;
+    }
+
+    public void setPrecedenteDirection(Directions precedenteDirection) {
+        this.precedenteDirection = precedenteDirection;
+    }
+
+
 
     public void choixDirection(int degresDifficulté, Contenu[][] planche){
 
@@ -67,12 +93,12 @@ public class Fantome {
         // Si un fantome croise un autre les deux font demi tour
 
 
-
-
-
-
-
     }
 
+    public int aEteMange(){ //appellé quand pacman a mangé le fantôme
+        setEtat(2);
+        setCoordonnees(Constantes.getCooDefaut());
+        setEtat(0);
+    }
 
 }
