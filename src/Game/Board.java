@@ -26,29 +26,7 @@ public class Board {
 
         this.map = Outils.Fonctions.mappingMap(Outils.Chemin.getCheminCarte()); // on transforme la mapIni.txt en char[][]
 
-        this.cases = Outils.Fonctions.mapParser(this.map); // on passe le char[][] en Contenu[][]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        this.cases = Outils.Fonctions.mapParser(this.map); // on passe le char[][] en attribContenu[][]
 
 
 

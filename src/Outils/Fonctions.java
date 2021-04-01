@@ -57,28 +57,28 @@ public class Fonctions {
      * @param posY la position Y
      * @return un ArrayList avec les positions
      */
-    public List<Directions> scanPos(Contenu[][] toScan, int posX, int posY){
+    public static List<Directions> scanAutour(Contenu[][] toScan, int posX, int posY){
 
         List<Directions> toReturn = new ArrayList<Directions>();
 
 
-        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  ||toScan[posX-1][posY] == Contenu.GROS_BONBON ){
+        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  || toScan[posX-1][posY] == Contenu.GROS_BONBON || toScan[posX-1][posY] == Contenu.FANTOME1||toScan[posX-1][posY] == Contenu.FANTOME2 ||toScan[posX-1][posY] == Contenu.FANTOME3){
 
             toReturn.add(Directions.GAUCHE);
 
         }
-        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  ||toScan[posX+1][posY] == Contenu.GROS_BONBON ){
+        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  || toScan[posX+1][posY] == Contenu.GROS_BONBON || toScan[posX+1][posY] == Contenu.FANTOME1||toScan[posX+1][posY] == Contenu.FANTOME2 ||toScan[posX+1][posY] == Contenu.FANTOME3 ){
 
             toReturn.add(Directions.DROITE);
 
         }
 
-        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  ||toScan[posX][posY-1] == Contenu.GROS_BONBON ){
+        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  || toScan[posX][posY-1] == Contenu.GROS_BONBON || toScan[posX][posY-1] == Contenu.FANTOME1||toScan[posX][posY-1] == Contenu.FANTOME2 ||toScan[posX][posY-1] == Contenu.FANTOME3 ){
 
             toReturn.add(Directions.BAS);
 
         }
-        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  ||toScan[posX][posY+1] == Contenu.GROS_BONBON ){
+        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  || toScan[posX][posY+1] == Contenu.GROS_BONBON || toScan[posX][posY+1] == Contenu.FANTOME1||toScan[posX][posY+1] == Contenu.FANTOME2 ||toScan[posX][posY+1] == Contenu.FANTOME3){
 
             toReturn.add(Directions.HAUT);
 
@@ -91,7 +91,7 @@ public class Fonctions {
     }
 
     /**
-     * Parse la map Brute (à l'init de Board) en un tableau de Contenu
+     * Parse la map Brute (à l'init de Board) en un tableau de attribContenu
      * @param bruteMap le char[][] de la map brute
      * @return le Contenu[][] Correspondant
      */
@@ -133,6 +133,44 @@ public class Fonctions {
             }
 
         }
+        return toReturn;
+
+    }
+
+    /**
+     *
+     * @param toScan Board actuelle format Contenu[][]
+     * @param posX Position X
+     * @param posY Position Y
+     * @return Le contenu de la case
+     */
+    public Contenu scanPos(Contenu[][] toScan, int posX, int posY){
+
+        return toScan[posX][posY];
+
+    }
+
+
+    /**
+     * Renvoie Contenu[] avec en index:
+     * 0: Entité en face
+     * 1: Entite a droite
+     * 2: Entite derriere
+     * 3: Entite a gauche
+     * @param toScan le tableau a scanner
+     * @param posX posX
+     * @param posY pos Y
+     * @return Contenu[]
+     */
+    public static Contenu[] scanContenuAutour(Contenu[][] toScan, int posX, int posY){
+
+        Contenu[] toReturn = new Contenu[4];
+
+        toReturn[0] = toScan[posX][posY+1];
+        toReturn[1] = toScan[posX+1][posY];
+        toReturn[2] = toScan[posX][posY-1];
+        toReturn[3] = toScan[posX-1][posY];
+
         return toReturn;
 
     }
