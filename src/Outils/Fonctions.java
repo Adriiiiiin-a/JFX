@@ -144,7 +144,7 @@ public class Fonctions {
      * @param posY Position Y
      * @return Le contenu de la case
      */
-    public Contenu scanPos(Contenu[][] toScan, int posX, int posY){
+    public static Contenu scanPos(Contenu[][] toScan, int posX, int posY){
 
         return toScan[posX][posY];
 
@@ -196,6 +196,16 @@ public class Fonctions {
         return true;
 
 
+    }
+
+    public static boolean checkLose(Contenu[][] toScan, int posX, int posY){
+
+        if (scanPos(toScan,posX,posY) == Contenu.FANTOME1 || scanPos(toScan,posX,posY) == Contenu.FANTOME2 || scanPos(toScan,posX,posY) == Contenu.FANTOME3 || scanPos(toScan,posX,posY) == Contenu.FANTOME4){
+            return true;
+        }
+
+
+        return false;
     }
 
 
