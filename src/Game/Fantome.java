@@ -15,6 +15,7 @@ public class Fantome {
 
     private Directions precedenteDirection;
 
+
     public Fantome(int type, int[] coo){
 
         switch (type){
