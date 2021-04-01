@@ -1,11 +1,5 @@
 package Game;
 
-
-//FANTOME1 = Fantome rouge;
-//FANTOME2 = Fantome rose;
-//FANTOME3 = Fantome bleu;
-//FANTOME4 = Fantome orange;
-
 import Outils.Contenu;
 import Outils.Directions;
 import Outils.Fonctions;
