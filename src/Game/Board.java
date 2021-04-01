@@ -1,5 +1,6 @@
 package Game;
 
+
 import java.io.FileNotFoundException;
 
 /**
@@ -11,20 +12,27 @@ import java.io.FileNotFoundException;
  */
 public class Board {
 
-    private int lignes;
-    private int colonnes;
+
     public char[][] map;
-    private Contenu[][] cases;
+    private Outils.Contenu[][] cases;
 
 
     /**
-     * Doit initialiser la plache de jeu:
-     * traduire le char en Contenu[][]
+     * Doit initialiser la planche de jeu:
+     *
      */
     public Board() throws FileNotFoundException {
 
 
-        this.map = Outils.Fonctions.mappingMap(Outils.Chemin.getCheminCarte());
+        this.map = Outils.Fonctions.mappingMap(Outils.Chemin.getCheminCarte()); // on transforme la mapIni.txt en char[][]
+
+        this.cases = Outils.Fonctions.mapParser(this.map); // on passe le char[][] en Contenu[][]
+
+
+
+
+
+
 
 
 

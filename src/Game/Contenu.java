@@ -8,13 +8,13 @@ public class Contenu {
     private int X; // Coordonnée X (colonne) de la case
     private int Y; // Coordonnée Y (ligne) de la case
 
-    private nomContenu defContenu; // Nom de l'entité
+    private Outils.Contenu defContenu; // Nom de l'entité
 
     private String lienImage; // Lien de l'image correspondante
 
     private Board plancheJeu; // Planche de jeu
 
-    public Contenu(int coordonneeX, int coordonneeY, nomContenu nomContenu, Board plancheDeJeu, String lienImage){
+    public Contenu(int coordonneeX, int coordonneeY, Outils.Contenu nomContenu, Board plancheDeJeu, String lienImage){
         this.X = coordonneeX;
         this.Y = coordonneeY;
         this.defContenu = nomContenu;
@@ -30,7 +30,7 @@ public class Contenu {
         return this.Y;
     }
 
-    public nomContenu getDefContenu() {
+    public Outils.Contenu getDefContenu() {
         return this.defContenu;
     }
 
