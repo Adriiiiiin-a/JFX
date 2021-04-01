@@ -23,6 +23,10 @@ public class Player {
 
     private Directions precedenteDirection;
 
+    private int nbVies;
+
+    private int score;
+
 
 
 
@@ -77,6 +81,8 @@ public class Player {
         this.coordonnes= getCooSpawnPlayer();
         this.precedenteDirection = null;
         this.nomJoueur = nomJoueur;
+        this.score = 0;
+        this.nbVies = 3;
     }
 
 
