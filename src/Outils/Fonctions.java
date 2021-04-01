@@ -57,7 +57,7 @@ public class Fonctions {
      * @param posY la position Y
      * @return un ArrayList avec les positions
      */
-    public List<Directions> scanPos(Contenu[][] toScan, int posX, int posY){
+    public List<Directions> scanAutour(Contenu[][] toScan, int posX, int posY){
 
         List<Directions> toReturn = new ArrayList<Directions>();
 
@@ -91,7 +91,7 @@ public class Fonctions {
     }
 
     /**
-     * Parse la map Brute (à l'init de Board) en un tableau de Contenu
+     * Parse la map Brute (à l'init de Board) en un tableau de attribContenu
      * @param bruteMap le char[][] de la map brute
      * @return le Contenu[][] Correspondant
      */
@@ -135,6 +135,28 @@ public class Fonctions {
         }
         return toReturn;
 
+    }
+
+    /**
+     *
+     * @param toScan Board actuelle format Contenu[][]
+     * @param posX Position X
+     * @param posY Position Y
+     * @return Le contenu de la case
+     */
+    public Contenu scanPos(Contenu[][] toScan, int posX, int posY){
+
+        return toScan[posX][posY];
+
+    }
+
+    public Contenu[][] actualisationTab(){
+
+        Contenu[][] toReturn = new Contenu[Constantes.getNombreLignes()][Constantes.getNombreColonnes()];
+
+
+
+        return toReturn;
     }
 
 

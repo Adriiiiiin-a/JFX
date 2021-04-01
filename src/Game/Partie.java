@@ -41,4 +41,15 @@ public class Partie {
     public Board getBoardPartie() {
         return boardPartie;
     }
+
+
+
+    public void jeu(){
+
+
+
+
+    }
+
+
 }
