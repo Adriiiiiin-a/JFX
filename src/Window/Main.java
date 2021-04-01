@@ -29,19 +29,14 @@ public class Main extends Application {
         primaryStage.setWidth(800);
         primaryStage.setHeight(600);
 
-        BackgroundImage myBI= new BackgroundImage(,
-                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-//then you set to your node
-        myContainer.setBackground(new Background(myBI));
 //Scene 1
-     /*   Label label1 = new Label("Menu Principale");
+        Label label1 = new Label("Menu Principale");
 
         Button button1= new Button("Play");
         button1.setOnAction(e -> primaryStage.setScene(scene2));
         VBox layout = new VBox();
         layout.getChildren().addAll(label1,button1);
-        scene1 = new Scene(layout,500,550);*/
+        scene1 = new Scene(layout,500,550);
 
 
 //Scene 2

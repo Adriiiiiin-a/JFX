@@ -18,10 +18,7 @@ public class Controller {
     @FXML
     ImageView MyImageView;
     Button MyButton;
-    Image MyImage = new Image("../../fichiersEternes/menuPacman.png").getImage();
+   //Image MyImage = new Image("../../fichiersEternes/menuPacman.png").getImage();
 
-    public void displayImage(){
-        MyImageView ;
 
-    }
 }
