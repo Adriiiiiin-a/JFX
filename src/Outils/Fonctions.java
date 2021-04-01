@@ -173,6 +173,28 @@ public class Fonctions {
 
         return toReturn;
 
+    }
+
+    /**
+     * Vérifie si la case est traversable
+     * @param dir la direction de la future case
+     * @param autour le tableau retourné par scanContenuAutour
+     * @return true si traversable false sinon
+     */
+    public static boolean checkTraversable(Directions dir, Contenu[] autour){
+
+        switch(dir){
+
+            case GAUCHE : if(autour[3]==Contenu.MUR || autour[3]==Contenu.PORTE){return false;}break;
+            case DROITE: if(autour[1]==Contenu.MUR || autour[1]==Contenu.PORTE){return false;}break;
+            case BAS : if(autour[2]==Contenu.MUR || autour[2]==Contenu.PORTE){return false;}break;
+            case HAUT: if(autour[0]==Contenu.MUR || autour[0]==Contenu.PORTE){return false;}break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + dir);
+
+        }
+        return true;
+
 
     }
 
