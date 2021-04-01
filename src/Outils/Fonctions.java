@@ -198,15 +198,22 @@ public class Fonctions {
 
     }
 
+    /**
+     * Check si la case contient un fantome
+     * @param toScan
+     * @param posX
+     * @param posY
+     * @return true si fantome false sinon
+     */
     public static boolean checkLose(Contenu[][] toScan, int posX, int posY){
 
         if (scanPos(toScan,posX,posY) == Contenu.FANTOME1 || scanPos(toScan,posX,posY) == Contenu.FANTOME2 || scanPos(toScan,posX,posY) == Contenu.FANTOME3 || scanPos(toScan,posX,posY) == Contenu.FANTOME4){
             return true;
         }
-
-
         return false;
     }
+
+    public static
 
 
 
