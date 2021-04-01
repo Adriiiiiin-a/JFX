@@ -264,7 +264,7 @@ public class Fonctions {
      * @param toChange resultat de scanPos
      * @return ne nouveau contenu de la case
      */
-    public Contenu changeState(Contenu toChange){
+    public static Contenu changeState(Contenu toChange){
         Contenu toReturn;
         switch (toChange){
 

@@ -94,6 +94,8 @@ public class Player extends Partie{
         boolean loose = false;
 
         Contenu actual = scanPos(planche, x, y);
+        Contenu[] autourActual = scanContenuAutour(planche, x, y);
+
 
         loose = checkLose(actual);
         if(loose){
@@ -107,7 +109,9 @@ public class Player extends Partie{
                 return planche;
             }
 
-            }
+        }
+
+        Fonctions.changeState(actual);
 
 
 
@@ -161,10 +165,22 @@ public class Player extends Partie{
 
 
 
+        actual = scanPos(planche, x, y);
+        loose = checkLose(actual);
+        if(loose){
 
+            if(nbVies >0) {
+                this.nbVies -= 1;
+                super.relance = true;
+            }else{
+                System.out.print("Perdu ! looser va <3");
+                super.perdu = true;
+                return planche;
+            }
 
+        }
 
-
+        return toReturn[][];
 
     }
 
