@@ -1,10 +1,14 @@
 package Game;
 
+import Outils.Constantes;
 import Outils.Contenu;
+import Outils.Contenu.*;
 import Outils.Directions;
 import Outils.Fonctions;
 import com.sun.prism.impl.shape.ShapeUtil;
+import Outils.Constantes.*;
 
+import static Outils.Constantes.getCooSpawnPlayer;
 import static Outils.Directions.*;
 import static Outils.Fonctions.checkTraversable;
 
@@ -15,7 +19,7 @@ public class Player {
 
     private int[] coordonnes;
 
-    private Contenu PACMAN = Outils.Contenu.PACMAN;
+    private Contenu PACMAN = Contenu.PACMAN;
 
     private Directions precedenteDirection;
 
@@ -68,9 +72,9 @@ public class Player {
                 '}';
     }
 
-    public Player(String nomJoueur,int[] coo){
+    public Player(String nomJoueur){
 
-        this.coordonnes=coo;
+        this.coordonnes= getCooSpawnPlayer();
         this.precedenteDirection = null;
         this.nomJoueur = nomJoueur;
     }

@@ -8,6 +8,8 @@ public class Constantes {
 
     private static int[] cooDefaut = {0,0};
 
+    private static int[] cooSpawnPlayer = {0,0};
+
     public static int getNombreLignes() {
         return nombreLignes;
     }
@@ -19,5 +21,9 @@ public class Constantes {
 
     public static int[] getCooDefaut() {
         return cooDefaut;
+    }
+
+    public static int[] getCooSpawnPlayer() {
+        return cooSpawnPlayer;
     }
 }
