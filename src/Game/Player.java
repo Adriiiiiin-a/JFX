@@ -119,17 +119,17 @@ public class Player {
         Contenu[] contenuAutour = Fonctions.scanContenuAutour(planche,x,y);
 
 
-        if(dir == GAUCHE && checkTraversable(dir, contenuAutour)){
+        if(dir == GAUCHE && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
 
 
-        }else if(dir == DROITE && checkTraversable(dir, contenuAutour)){
+        }else if(dir == DROITE && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
 
-        }else if (dir == HAUT && checkTraversable(dir, contenuAutour)){
+        }else if (dir == HAUT && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
 
-        }else if (dir == BAS && checkTraversable(dir, contenuAutour)){
+        }else if (dir == BAS && checkTraversable(dir, contenuAutour,this.PACMAN)){
 
 
 

@@ -177,21 +177,70 @@ public class Fonctions {
      * @param autour le tableau retourné par scanContenuAutour
      * @return true si traversable false sinon
      */
-    public static boolean checkTraversable(Directions dir, Contenu[] autour){
+    public static boolean checkTraversable(Directions dir, Contenu[] autour, Contenu type){
 
-        switch(dir){
+        if(type == Contenu.PACMAN) {
 
-            case GAUCHE : if(autour[3]==Contenu.MUR || autour[3]==Contenu.PORTE){return false;}break;
-            case DROITE: if(autour[1]==Contenu.MUR || autour[1]==Contenu.PORTE){return false;}break;
-            case BAS : if(autour[2]==Contenu.MUR || autour[2]==Contenu.PORTE){return false;}break;
-            case HAUT: if(autour[0]==Contenu.MUR || autour[0]==Contenu.PORTE){return false;}break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + dir);
+            switch (dir) {
+
+                case GAUCHE:
+                    if (autour[3] == Contenu.MUR || autour[3] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                case DROITE:
+                    if (autour[1] == Contenu.MUR || autour[1] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                case BAS:
+                    if (autour[2] == Contenu.MUR || autour[2] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                case HAUT:
+                    if (autour[0] == Contenu.MUR || autour[0] == Contenu.PORTE) {
+                        return false;
+                    }
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + dir);
+
+            }
+
+        }else{
+
+            switch (dir) {
+
+                case GAUCHE:
+                    if (autour[3] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                case DROITE:
+                    if (autour[1] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                case BAS:
+                    if (autour[2] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                case HAUT:
+                    if (autour[0] == Contenu.MUR) {
+                        return false;
+                    }
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + dir);
+
+            }
+
 
         }
+
         return true;
-
-
     }
 
     /**
