@@ -62,32 +62,28 @@ public class Fonctions {
         List<Directions> toReturn = new ArrayList<Directions>();
 
 
-        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  || toScan[posX-1][posY] == Contenu.GROS_BONBON || toScan[posX-1][posY] == Contenu.FANTOME1||toScan[posX-1][posY] == Contenu.FANTOME2 ||toScan[posX-1][posY] == Contenu.FANTOME3){
+        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  || toScan[posX-1][posY] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.GAUCHE);
 
         }
-        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  || toScan[posX+1][posY] == Contenu.GROS_BONBON || toScan[posX+1][posY] == Contenu.FANTOME1||toScan[posX+1][posY] == Contenu.FANTOME2 ||toScan[posX+1][posY] == Contenu.FANTOME3 ){
+        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  || toScan[posX+1][posY] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.DROITE);
 
         }
 
-        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  || toScan[posX][posY-1] == Contenu.GROS_BONBON || toScan[posX][posY-1] == Contenu.FANTOME1||toScan[posX][posY-1] == Contenu.FANTOME2 ||toScan[posX][posY-1] == Contenu.FANTOME3 ){
+        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  || toScan[posX][posY-1] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.BAS);
 
         }
-        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  || toScan[posX][posY+1] == Contenu.GROS_BONBON || toScan[posX][posY+1] == Contenu.FANTOME1||toScan[posX][posY+1] == Contenu.FANTOME2 ||toScan[posX][posY+1] == Contenu.FANTOME3){
+        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  || toScan[posX][posY+1] == Contenu.GROS_BONBON){
 
             toReturn.add(Directions.HAUT);
 
         }
-
-
-
         return toReturn;
-
     }
 
     /**
@@ -200,14 +196,12 @@ public class Fonctions {
 
     /**
      * Check si la case contient un fantome
-     * @param toScan
-     * @param posX
-     * @param posY
+     * @param toCheck result de scanPos
      * @return true si fantome false sinon
      */
-    public static boolean checkLose(Contenu[][] toScan, int posX, int posY){
+    public static boolean checkLose(Contenu toCheck){
 
-        if (scanPos(toScan,posX,posY) == Contenu.FANTOME1 || scanPos(toScan,posX,posY) == Contenu.FANTOME2 || scanPos(toScan,posX,posY) == Contenu.FANTOME3 || scanPos(toScan,posX,posY) == Contenu.FANTOME4){
+        if (toCheck == Contenu.FANTOME1 || toCheck == Contenu.FANTOME2 || toCheck == Contenu.FANTOME3 || toCheck == Contenu.FANTOME4){
             return true;
         }
         return false;
