@@ -57,28 +57,28 @@ public class Fonctions {
      * @param posY la position Y
      * @return un ArrayList avec les positions
      */
-    public static List<Directions> scanAutour(Contenu[][] toScan, int posX, int posY){
+    public List<Directions> scanAutour(Contenu[][] toScan, int posX, int posY){
 
         List<Directions> toReturn = new ArrayList<Directions>();
 
 
-        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  || toScan[posX-1][posY] == Contenu.GROS_BONBON || toScan[posX-1][posY] == Contenu.FANTOME1||toScan[posX-1][posY] == Contenu.FANTOME2 ||toScan[posX-1][posY] == Contenu.FANTOME3){
+        if(toScan[posX-1][posY] == Contenu.VIDE || toScan[posX-1][posY] == Contenu.BONBON  ||toScan[posX-1][posY] == Contenu.GROS_BONBON ){
 
             toReturn.add(Directions.GAUCHE);
 
         }
-        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  || toScan[posX+1][posY] == Contenu.GROS_BONBON || toScan[posX+1][posY] == Contenu.FANTOME1||toScan[posX+1][posY] == Contenu.FANTOME2 ||toScan[posX+1][posY] == Contenu.FANTOME3 ){
+        if(toScan[posX+1][posY] == Contenu.VIDE || toScan[posX+1][posY] == Contenu.BONBON  ||toScan[posX+1][posY] == Contenu.GROS_BONBON ){
 
             toReturn.add(Directions.DROITE);
 
         }
 
-        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  || toScan[posX][posY-1] == Contenu.GROS_BONBON || toScan[posX][posY-1] == Contenu.FANTOME1||toScan[posX][posY-1] == Contenu.FANTOME2 ||toScan[posX][posY-1] == Contenu.FANTOME3 ){
+        if(toScan[posX][posY-1] == Contenu.VIDE || toScan[posX][posY-1] == Contenu.BONBON  ||toScan[posX][posY-1] == Contenu.GROS_BONBON ){
 
             toReturn.add(Directions.BAS);
 
         }
-        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  || toScan[posX][posY+1] == Contenu.GROS_BONBON || toScan[posX][posY+1] == Contenu.FANTOME1||toScan[posX][posY+1] == Contenu.FANTOME2 ||toScan[posX][posY+1] == Contenu.FANTOME3){
+        if(toScan[posX][posY+1] == Contenu.VIDE || toScan[posX][posY+1] == Contenu.BONBON  ||toScan[posX][posY+1] == Contenu.GROS_BONBON ){
 
             toReturn.add(Directions.HAUT);
 
@@ -150,52 +150,13 @@ public class Fonctions {
 
     }
 
+    public Contenu[][] actualisationTab(){
 
-    /**
-     * Renvoie Contenu[] avec en index:
-     * 0: Entité en face
-     * 1: Entite a droite
-     * 2: Entite derriere
-     * 3: Entite a gauche
-     * @param toScan le tableau a scanner
-     * @param posX posX
-     * @param posY pos Y
-     * @return Contenu[]
-     */
-    public static Contenu[] scanContenuAutour(Contenu[][] toScan, int posX, int posY){
+        Contenu[][] toReturn = new Contenu[Constantes.getNombreLignes()][Constantes.getNombreColonnes()];
 
-        Contenu[] toReturn = new Contenu[4];
 
-        toReturn[0] = toScan[posX][posY+1];
-        toReturn[1] = toScan[posX+1][posY];
-        toReturn[2] = toScan[posX][posY-1];
-        toReturn[3] = toScan[posX-1][posY];
 
         return toReturn;
-
-    }
-
-    /**
-     * Vérifie si la case est traversable
-     * @param dir la direction de la future case
-     * @param autour le tableau retourné par scanContenuAutour
-     * @return true si traversable false sinon
-     */
-    public static boolean checkTraversable(Directions dir, Contenu[] autour){
-
-        switch(dir){
-
-            case GAUCHE : if(autour[3]==Contenu.MUR || autour[3]==Contenu.PORTE){return false;}break;
-            case DROITE: if(autour[1]==Contenu.MUR || autour[1]==Contenu.PORTE){return false;}break;
-            case BAS : if(autour[2]==Contenu.MUR || autour[2]==Contenu.PORTE){return false;}break;
-            case HAUT: if(autour[0]==Contenu.MUR || autour[0]==Contenu.PORTE){return false;}break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + dir);
-
-        }
-        return true;
-
-
     }
 
 
