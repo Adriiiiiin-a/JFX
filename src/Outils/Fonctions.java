@@ -220,9 +220,7 @@ public class Fonctions {
      * @return ne nouveau contenu de la case
      */
     public Contenu changeState(Contenu toChange){
-
         Contenu toReturn;
-
         switch (toChange){
 
             case GROS_BONBON:
@@ -232,13 +230,11 @@ public class Fonctions {
                 toReturn = Contenu.VIDE;
                 break;
 
-
             default:
                 throw new IllegalStateException("Unexpected value: " + toChange);
         }
 
         return toReturn;
-
 
     }
 
