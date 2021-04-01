@@ -87,7 +87,9 @@ public class Player {
 
 
 
-    public Contenu[][] choixDirection(Contenu[][] planche){
+    public Contenu[][] action(Contenu[][] planche){
+
+
 
         String toucheEnfoncee = null;
         Directions dir;
