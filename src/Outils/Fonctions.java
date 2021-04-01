@@ -213,7 +213,34 @@ public class Fonctions {
         return false;
     }
 
-    public static
+
+    /**
+     *
+     * @param toChange resultat de scanPos
+     * @return ne nouveau contenu de la case
+     */
+    public Contenu changeState(Contenu toChange){
+
+        Contenu toReturn;
+
+        switch (toChange){
+
+            case GROS_BONBON:
+                toReturn = Contenu.VIDE;
+                break;
+            case BONBON:
+                toReturn = Contenu.VIDE;
+                break;
+
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + toChange);
+        }
+
+        return toReturn;
+
+
+    }
 
 
 
