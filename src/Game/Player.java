@@ -103,6 +103,7 @@ public class Player extends Partie{
             if(nbVies >0) {
                 this.nbVies -= 1;
                 super.relance = true;
+                return planche;
             }else{
                 System.out.print("Perdu ! looser va <3");
                 super.perdu = true;
@@ -175,6 +176,7 @@ public class Player extends Partie{
             if(nbVies >0) {
                 this.nbVies -= 1;
                 super.relance = true;
+                return planche;
             }else{
                 System.out.print("Perdu ! looser va <3");
                 super.perdu = true;
