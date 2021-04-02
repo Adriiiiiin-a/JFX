@@ -31,12 +31,16 @@ public class Partie {
 
     private int niveau;
 
+    private Mode modePartie;
+
     public boolean perdu;
     public boolean relance;
 
-    public Partie() {
+    public Partie(){}
 
-        Player joueur = new Player();
+    public Partie(String nomJoueur, Mode modePartie) {
+
+        Player joueur = new Player(nomJoueur);
 
         Board board = null;
         try {
@@ -62,6 +66,7 @@ public class Partie {
         this.perdu = false;
         this.niveau = 0;
         this.relance = false;
+        this.modePartie=modePartie;
 
     }
 
@@ -81,6 +86,8 @@ public class Partie {
      */
     public void jeu() throws InterruptedException {
 
+
+
         while(!this.perdu && !this.relance){
 
             this.boardPartie.setCases(joueurPartie.action(this.boardPartie.getCases()));
@@ -92,12 +99,14 @@ public class Partie {
             this.boardPartie.setCases(fantome3.action(this.niveau ,this.boardPartie.getCases()));
             this.boardPartie.setCases(fantome4.action(this.niveau ,this.boardPartie.getCases()));
 
+            affiche(this.modePartie, this.boardPartie.getCases());
+
         }
-        if(this.relance){this.relance = false; TimeUnit.SECONDS.sleep(3); jeu();}
+        if(this.relance){this.relance = false; TimeUnit.SECONDS.sleep(3); this.jeu();}
 
         Fonctions.ecritureRecord(this.joueurPartie);
 
-        testPacman.fenetrePacman.setTitle("");
+        //testPacman.fenetrePacman.setTitle("");
 
 
 
