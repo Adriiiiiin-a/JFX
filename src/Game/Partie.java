@@ -6,6 +6,9 @@ import java.util.concurrent.TimeUnit;
 
 import Outils.*;
 import Outils.Fonctions.*;
+import Window.testPacman;
+import javafx.application.Application;
+
 /**
  *Initialise la partie:
  * Planche de jeu
@@ -93,6 +96,8 @@ public class Partie {
         if(this.relance){this.relance = false; TimeUnit.SECONDS.sleep(3); jeu();}
 
         Fonctions.ecritureRecord(this.joueurPartie);
+
+        testPacman.fenetrePacman.setTitle("");
 
 
 
