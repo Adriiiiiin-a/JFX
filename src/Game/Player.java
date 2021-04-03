@@ -21,6 +21,8 @@ public class Player extends Partie{
 
     private Contenu PACMAN = Contenu.PACMAN;
 
+    private Directions direction;
+
     private Directions precedenteDirection;
 
     private int nbVies;
@@ -86,6 +88,9 @@ public class Player extends Partie{
     }
 
 
+    public void setDirection(Directions direction) {
+        this.direction = direction;
+    }
 
     public Contenu[][] action(Contenu[][] planche){
 
@@ -118,29 +123,11 @@ public class Player extends Partie{
 
 
 
-        String toucheEnfoncee = null;
-        Directions dir;
 
 
-        switch (toucheEnfoncee){
 
-            case "fleche de droite":
-                dir = DROITE;
-                break;
-            case "fleche du bas":
-                dir = BAS;
-                break;
-            case "fleche de gauche":
-                dir = GAUCHE;
-                break;
-            case "fleche du haut":
-                dir = HAUT;
-                break;
-            default:
-                dir = this.precedenteDirection;
-        }
 
-        this.precedenteDirection = dir;
+        Directions dir = this.direction;
 
 
 
@@ -184,6 +171,8 @@ public class Player extends Partie{
             }
 
         }
+
+        this.precedenteDirection = this.direction;
 
         return planche;
 

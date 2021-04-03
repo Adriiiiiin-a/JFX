@@ -6,9 +6,9 @@ public class Constantes {
     private static int nombreLignes = 31 ;
     private static int nombreColonnes = 28;
 
-    private static int[] cooDefaut = {0,0};
+    private static int[] cooDefaut = {1,27};
 
-    private static int[] cooSpawnPlayer = {0,0};
+    private static int[] cooSpawnPlayer = {1,1};
 
     public static int getNombreLignes() {
         return nombreLignes;

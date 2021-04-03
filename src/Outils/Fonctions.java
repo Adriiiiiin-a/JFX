@@ -3,8 +3,7 @@ package Outils;
 
 import Game.Player;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,32 +19,43 @@ public class Fonctions {
      * @return unTableau 2D de char
      * @throws FileNotFoundException fichier introuvable
      */
-    public static char[][] mappingMap(String pathFichier) throws FileNotFoundException {
+    public static char[][] mappingMap(String pathFichier) throws IOException {
 
-        String temp = null;
-        String sautLigne = "|";
-        String toString ="";
+        char[][] tab = new char[31][28];
 
-        File map = new File(pathFichier);
-        Scanner scan = new Scanner(map);
+        // Le fichier d'entrée
+        File file = new File(Chemin.getCheminCarte());
+        // Créer l'objet File Reader
+        FileReader fileReader = new FileReader(file);
+        // Créer l'objet BufferedReader
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        int c = 0;
+        // Lire caractère par caractère
+        while((c = bufferedReader.read()) != '-')
+        {
+            // convertir l'entier en char
+            char ch = (char) c;
+            // Afficher le caractère
+            //System.out.print(ch);
+            int x = 0;
+            int y = 0;
+            boolean stop = false;
 
-        while (scan.hasNextLine()){
 
-            temp = scan.nextLine();
-            toString += temp;
-            toString += sautLigne;
+
+            if (ch != '\n') {
+                tab[x][y] = ch;
+                //System.out.print("Pedro");
+                System.out.print(tab[x][y]);
+                y++;
+            }else{
+                System.out.print('\n');
+                y=0;
+                x++;
+            }
 
         }
-
-        String[] lignes = toString.split("|");
-        char[][] chars = new char[lignes.length + 1][];
-        for (int i = 0; i < lignes.length; i++) {
-            String component = lignes[i];
-            chars[i] = component.toCharArray();
-        }
-        chars[lignes.length] = new char[] { '\0' };
-
-        return chars;
+        return tab;
 
     }
 
@@ -59,7 +69,7 @@ public class Fonctions {
      * @param posY la position Y
      * @return un ArrayList avec les positions
      */
-    public static List<Directions> scanAutour(Contenu[][] toScan, int posX, int posY){
+    public static List<Directions> scanAutour(Contenu[][] toScan, int posY, int posX){
 
         List<Directions> toReturn = new ArrayList<Directions>();
 
@@ -142,7 +152,7 @@ public class Fonctions {
      * @param posY Position Y
      * @return Le contenu de la case
      */
-    public static Contenu scanPos(Contenu[][] toScan, int posX, int posY){
+    public static Contenu scanPos(Contenu[][] toScan, int posY, int posX){
 
         return toScan[posX][posY];
 
@@ -160,7 +170,7 @@ public class Fonctions {
      * @param posY pos Y
      * @return Contenu[]
      */
-    public static Contenu[] scanContenuAutour(Contenu[][] toScan, int posX, int posY){
+    public static Contenu[] scanContenuAutour(Contenu[][] toScan, int posY, int posX){
 
         Contenu[] toReturn = new Contenu[4];
 
@@ -274,6 +284,16 @@ public class Fonctions {
             case BONBON:
                 toReturn = Contenu.VIDE;
                 break;
+            case MUR:
+                toReturn = Contenu.MUR;
+                break;
+            case PACMAN:
+                toReturn = Contenu.VIDE;
+                break;
+            case VIDE:
+                toReturn = Contenu.VIDE;
+                break;
+
 
             default:
                 throw new IllegalStateException("Unexpected value: " + toChange);

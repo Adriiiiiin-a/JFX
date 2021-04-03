@@ -4,6 +4,7 @@ package Game;
 import Outils.Contenu;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Board {
      * Doit initialiser la planche de jeu:
      *
      */
-    public Board() throws FileNotFoundException {
+    public Board() throws IOException {
 
 
         this.map = Outils.Fonctions.mappingMap(Outils.Chemin.getCheminCarte()); // on transforme la mapIni.txt en char[][]

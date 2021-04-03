@@ -2,12 +2,14 @@ package Game;
 
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import Outils.*;
 import Outils.Fonctions.*;
 import Window.testPacman;
 import javafx.application.Application;
+import javafx.scene.Scene;
 
 /**
  *Initialise la partie:
@@ -20,7 +22,7 @@ import javafx.application.Application;
 
 public class Partie {
 
-    private Player joueurPartie;
+    public Player joueurPartie;
 
     private Board boardPartie;
 
@@ -36,6 +38,8 @@ public class Partie {
     public boolean perdu;
     public boolean relance;
 
+    public Scene screenPartie;
+
     public Partie(){}
 
     public Partie(String nomJoueur, Mode modePartie) {
@@ -46,6 +50,8 @@ public class Partie {
         try {
             board = new Board();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -84,27 +90,22 @@ public class Partie {
      *
      *
      */
-    public void jeu() throws InterruptedException {
+    public Contenu[][] jeu() throws InterruptedException {
 
 
 
-        while(!this.perdu && !this.relance){
+
 
             this.boardPartie.setCases(joueurPartie.action(this.boardPartie.getCases()));
 
-            if(this.perdu || this.relance){return;}
+            if(this.perdu || this.relance){return this.boardPartie.getCases();}
 
             this.boardPartie.setCases(fantome1.action(this.niveau ,this.boardPartie.getCases()));
             this.boardPartie.setCases(fantome2.action(this.niveau ,this.boardPartie.getCases()));
             this.boardPartie.setCases(fantome3.action(this.niveau ,this.boardPartie.getCases()));
             this.boardPartie.setCases(fantome4.action(this.niveau ,this.boardPartie.getCases()));
 
-            affiche(this.modePartie, this.boardPartie.getCases());
-
-        }
-        if(this.relance){this.relance = false; TimeUnit.SECONDS.sleep(3); this.jeu();}
-
-        Fonctions.ecritureRecord(this.joueurPartie);
+            return this.boardPartie.getCases();
 
         //testPacman.fenetrePacman.setTitle("");
 
